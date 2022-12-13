@@ -6,17 +6,16 @@ import '../helper/my_color.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
-
-  @override
-  void initState() {
-    super.initState();
-    Timer(Duration(seconds: 3), () => {Navigator.pushNamed(context, '/login')});
-  }
-
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3),
+        () => {Navigator.pushNamed(context, '/main_home')});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
