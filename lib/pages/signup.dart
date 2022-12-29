@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:pertemuan2/helper/my_color.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+import '../helper/my_color.dart';
+import '../widgets/textLabel.dart';
 
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,20 +23,87 @@ class LoginPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Login",
+                  "Daftar",
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.normal,
                       color: Colors.black),
                 ),
-                Text(
-                  "Silahkan login untuk melanjutkan",
-                  style: TextStyle(fontSize: 16),
+                TextLabel(
+                  text: 'Daftar Pengguna Baru',
                 ),
                 SizedBox(
                   height: 70,
                 ),
-                Text("Alamat Email"),
+                TextLabel(
+                  text: 'Nama Lengkap',
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 12),
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  height: 50,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.grey[200]),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "assets/i_profile.png",
+                        width: 20,
+                        height: 20,
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Expanded(
+                          child: TextFormField(
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                        decoration:
+                            InputDecoration.collapsed(hintText: 'Nama Lengkap'),
+                      )),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                TextLabel(
+                  text: 'Username',
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 12),
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  height: 50,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.grey[200]),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "assets/i_home.png",
+                        width: 20,
+                        height: 20,
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Expanded(
+                          child: TextFormField(
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                        decoration:
+                            InputDecoration.collapsed(hintText: 'Username'),
+                      )),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                TextLabel(
+                  text: 'Alamat Email',
+                ),
                 Container(
                   margin: EdgeInsets.only(top: 12),
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -60,7 +134,9 @@ class LoginPage extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
-                Text("Password"),
+                TextLabel(
+                  text: 'Password',
+                ),
                 Container(
                   margin: EdgeInsets.only(top: 12),
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -100,7 +176,7 @@ class LoginPage extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {},
                     child: Text(
-                      'Sign In',
+                      'Daftar',
                       style: TextStyle(fontSize: 16),
                     ),
                   ),
@@ -112,11 +188,11 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text("Belum punya akun?"),
+                    Text("Sudah punya akun?"),
                     GestureDetector(
-                      onTap: () => {Navigator.pushNamed(context, '/signUp')},
+                      onTap: () => {Navigator.pushNamed(context, '/login')},
                       child: Text(
-                        "Daftar",
+                        "Masuk.",
                         style: TextStyle(color: MyColor.primaryColor),
                       ),
                     )

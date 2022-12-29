@@ -12,8 +12,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3),
-        () => {Navigator.pushNamed(context, '/main_home')});
+    Timer(
+        Duration(seconds: 3), () => {Navigator.pushNamed(context, '/signUp')});
   }
 
   @override
