@@ -3,6 +3,7 @@ import 'package:pertemuan2/helper/my_color.dart';
 import 'package:pertemuan2/main.dart';
 import 'package:pertemuan2/pages/login.dart';
 import 'package:pertemuan2/pages/main_home.dart';
+import 'package:pertemuan2/pages/profile.dart';
 import 'package:pertemuan2/pages/signup.dart';
 import 'package:pertemuan2/pages/splashscreen.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/main_home': (context) => MainHome(),
         '/signUp': (context) => SignUpPage(),
-        // '/profile': (context) => ProfilePage(),
+        '/profile': (context) => ProfilePage(),
       },
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
