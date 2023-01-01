@@ -4,7 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:pertemuan2/helper/my_color.dart';
 import 'package:pertemuan2/widgets/textLabel.dart';
 
-import '../widgets/buttonProfile.dart';
+import '../../widgets/buttonProfile.dart';
+import '../../widgets/buttonProfile.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -74,15 +75,15 @@ class ProfilePage extends StatelessWidget {
                     height: 24,
                   ),
                   ButtonProfile(
-                      text: "Ganti Kata Sandi", icon: "assets/pass.png"),
+                      text: "Ganti Kata Sandi", icon: "assets/i_unlock.png"),
                   ButtonProfile(
-                      text: "Informasi Bantuan", icon: "assets/i_profile.png"),
+                      text: "Informasi Bantuan",
+                      icon: "assets/i_informasi.png"),
                   ButtonProfile(
-                      text: "Pengaturan", icon: "assets/i_profile.png"),
+                      text: "Pengaturan", icon: "assets/i_pengaturan.png"),
                   ButtonProfile(
-                      text: "Beri Rating Aplikasi",
-                      icon: "assets/i_profile.png"),
-                  ButtonProfile(text: "Keluar ", icon: "assets/i_profile.png"),
+                      text: "Beri Rating Aplikasi", icon: "assets/i_star.png"),
+                  ButtonProfile(text: "Keluar ", icon: "assets/i_logout.png"),
                 ],
               ),
             ),
