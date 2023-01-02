@@ -6,6 +6,8 @@ import 'package:pertemuan2/pages/home/main_home.dart';
 import 'package:pertemuan2/pages/home/profile.dart';
 import 'package:pertemuan2/pages/signup.dart';
 import 'package:pertemuan2/pages/splashscreen.dart';
+import 'package:pertemuan2/providers/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,16 +18,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      routes: {
-        '': (context) => SplashScreen(),
-        '/login': (context) => LoginPage(),
-        '/main_home': (context) => MainHome(),
-        '/signUp': (context) => SignUpPage(),
-        '/profile': (context) => ProfilePage(),
-      },
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
+      ],
+      child: MaterialApp(
+        routes: {
+          '': (context) => SplashScreen(),
+          '/login': (context) => LoginPage(),
+          '/main_home': (context) => MainHome(),
+          '/signUp': (context) => SignUpPage(),
+          '/profile': (context) => ProfilePage(),
+        },
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
+      ),
     );
   }
 }

@@ -4,11 +4,15 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:pertemuan2/helper/my_color.dart';
 import 'package:pertemuan2/widgets/product_card.dart';
+import 'package:provider/provider.dart';
+
+import '../../models/user_models.dart';
+import '../../providers/auth_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  Widget headerWidget() {
+  Widget headerWidget(UserModel user) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -16,7 +20,7 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Hello Faiz Amanulloh !",
+              "Hello ${user.name}",
               style: TextStyle(fontSize: 24),
             ),
             SizedBox(
@@ -183,6 +187,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
@@ -190,7 +196,7 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 30, horizontal: 16),
           child: Column(
             children: [
-              headerWidget(),
+              headerWidget(user),
               searchProductWidget(),
               categoryWidget(),
               trendingSalesWidget(),

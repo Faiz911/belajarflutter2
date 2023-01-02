@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:pertemuan2/helper/my_color.dart';
+import 'package:pertemuan2/providers/auth_provider.dart';
+import 'package:provider/provider.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
+
+  @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -50,6 +62,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       Expanded(
                           child: TextFormField(
+                        controller: emailController,
                         style: TextStyle(fontSize: 16, color: Colors.black),
                         decoration: InputDecoration.collapsed(
                             hintText: 'Masukkan email anda'),
@@ -81,6 +94,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       Expanded(
                           child: TextFormField(
+                        controller: passwordController,
                         obscureText: true,
                         style: TextStyle(fontSize: 16, color: Colors.black),
                         decoration: InputDecoration.collapsed(
@@ -98,7 +112,17 @@ class LoginPage extends StatelessWidget {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (authProvider.login(
+                          email: emailController.text,
+                          password: passwordController.text)) {
+                        Navigator.pushNamed(context, '/main_home');
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content:
+                                const Text('Username atau Password Salah!')));
+                      }
+                    },
                     child: Text(
                       'Sign In',
                       style: TextStyle(fontSize: 16),
