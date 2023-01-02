@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pertemuan2/providers/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../helper/my_color.dart';
 import '../widgets/textLabel.dart';
@@ -11,8 +13,29 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  TextEditingController nameController = TextEditingController(text: '');
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController usernameController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    void handleRegister() async {
+      if (await authProvider.register(
+          name: nameController.text,
+          email: emailController.text,
+          username: usernameController.text,
+          password: passwordController.text)) {
+        Navigator.pushNamed(context, "/login");
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text("Username atau password anda salah!"),
+          ),
+        );
+      }
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -58,6 +81,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       Expanded(
                           child: TextFormField(
+                        controller: nameController,
                         style: TextStyle(fontSize: 16, color: Colors.black),
                         decoration:
                             InputDecoration.collapsed(hintText: 'Nama Lengkap'),
@@ -91,6 +115,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       Expanded(
                           child: TextFormField(
+                        controller: usernameController,
                         style: TextStyle(fontSize: 16, color: Colors.black),
                         decoration:
                             InputDecoration.collapsed(hintText: 'Username'),
@@ -124,6 +149,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       Expanded(
                           child: TextFormField(
+                        controller: emailController,
                         style: TextStyle(fontSize: 16, color: Colors.black),
                         decoration: InputDecoration.collapsed(
                             hintText: 'Masukkan email anda'),
@@ -157,6 +183,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       Expanded(
                           child: TextFormField(
+                        controller: passwordController,
                         obscureText: true,
                         style: TextStyle(fontSize: 16, color: Colors.black),
                         decoration: InputDecoration.collapsed(
@@ -174,7 +201,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: handleRegister,
                     child: Text(
                       'Daftar',
                       style: TextStyle(fontSize: 16),

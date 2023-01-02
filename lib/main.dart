@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:pertemuan2/helper/my_color.dart';
 import 'package:pertemuan2/main.dart';
 import 'package:pertemuan2/pages/login.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
           '/signUp': (context) => SignUpPage(),
           '/profile': (context) => ProfilePage(),
         },
+        builder: EasyLoading.init(),
         debugShowCheckedModeBanner: false,
         home: SplashScreen(),
       ),
