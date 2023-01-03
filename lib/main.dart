@@ -8,6 +8,7 @@ import 'package:pertemuan2/pages/home/profile.dart';
 import 'package:pertemuan2/pages/signup.dart';
 import 'package:pertemuan2/pages/splashscreen.dart';
 import 'package:pertemuan2/providers/auth_provider.dart';
+import 'package:pertemuan2/providers/product_providers.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => ProductProviders()),
       ],
       child: MaterialApp(
         routes: {

@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:pertemuan2/helper/my_color.dart';
+import 'package:pertemuan2/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({Key? key}) : super(key: key);
+  final ProductModel product;
+
+  ProductCard(this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +22,8 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            "assets/headset_1.jpg",
+          Image.network(
+            product.thumbnail!,
             height: 160,
             width: double.infinity,
             fit: BoxFit.cover,
@@ -29,11 +32,11 @@ class ProductCard extends StatelessWidget {
             height: 10,
           ),
           Text(
-            "Beats solo3",
+            product.title!,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
           ),
           Text(
-            "Wiring Beats sound",
+            product.category!.name!,
             style: TextStyle(fontSize: 12, color: Colors.grey),
           ),
           Row(
@@ -41,7 +44,7 @@ class ProductCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                "\$199.0",
+                "\$${product.price}",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),

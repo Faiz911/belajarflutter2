@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
       EasyLoading.show(status: "Loading . .");
       if (await authProvider.login(
           email: emailController.text, password: passwordController.text)) {
-        Navigator.pushNamed(context, "/home");
+        Navigator.pushNamed(context, "/main_home");
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

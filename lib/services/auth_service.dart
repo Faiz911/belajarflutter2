@@ -9,7 +9,7 @@ class AuthService {
   //membuat autentikasi untuk login menggunakan api
   Future<UserModel> login({String email = "", String password = ""}) async {
     var url = Uri.parse("${Config.apiUrl}/api/login");
-    var headers = {'Content-Type ': 'application/json'};
+    var headers = {'Content-Type': 'application/json'};
     var payload = jsonEncode({"email": email, "password": password});
 
     var response = await http.post(url, headers: headers, body: payload);
