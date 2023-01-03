@@ -1,6 +1,5 @@
 import 'dart:ffi';
 
-import 'package:flutter/material.dart';
 import 'package:pertemuan2/models/category_model.dart';
 import 'package:pertemuan2/models/images_model.dart';
 
@@ -9,8 +8,8 @@ class ProductModel {
   String? title;
   String? description;
   double? price;
-  Float? discountPercentage;
-  Float? rating;
+  double? discountPercentage;
+  double? rating;
   int? stock;
   String? brand;
   String? thumbnail;
@@ -38,9 +37,12 @@ class ProductModel {
     id = json['id'];
     title = json['title'];
     description = json['description'];
-    price = json['price'];
-    discountPercentage = json['discountPercentage'];
-    rating = json['rating'];
+    price = double.parse(json['price'].toString());
+    discountPercentage = double.parse(json['discountPercentage'].toString());
+    rating = double.parse(json['rating'].toString());
+    // price = json['price'].toDouble();
+    // discountPercentage = json['discountPercentage'].toDouble();
+    // rating = json['rating'].toDouble();
     stock = json['stock'];
     brand = json['brand'];
     thumbnail = json['thumbnail'];

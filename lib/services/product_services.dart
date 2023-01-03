@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:pertemuan2/models/product_model.dart';
-import 'package:pertemuan2/models/user_models.dart';
 import 'package:http/http.dart' as http;
 
 import '../config.dart';
@@ -9,7 +8,7 @@ import '../config.dart';
 class ProductServices {
   //membuat autentikasi untuk login menggunakan api
   Future<List<ProductModel>> getProduct() async {
-    var url = Uri.parse("${Config.apiUrl}/api/products?categories=2");
+    var url = Uri.parse("${Config.apiUrl}/api/products");
     var headers = {'Content-Type': 'application/json'};
 
     var response = await http.get(
@@ -25,7 +24,6 @@ class ProductServices {
       for (var item in data) {
         product.add(ProductModel.fromJson(item));
       }
-
       return product;
     } else {
       throw Exception("Gagal get data product");
