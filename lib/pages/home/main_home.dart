@@ -1,16 +1,9 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:pertemuan2/helper/my_color.dart';
 import 'package:pertemuan2/pages/home/cartpage.dart';
 import 'package:pertemuan2/pages/home/favoritepage.dart';
 import 'package:pertemuan2/pages/home/homepage.dart';
 import 'package:pertemuan2/pages/home/profile.dart';
-import 'package:pertemuan2/providers/auth_provider.dart';
-import 'package:provider/provider.dart';
-
-import '../../models/user_models.dart';
 
 class MainHome extends StatefulWidget {
   const MainHome({Key? key}) : super(key: key);
