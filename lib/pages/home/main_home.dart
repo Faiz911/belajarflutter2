@@ -14,6 +14,7 @@ class MainHome extends StatefulWidget {
 
 class _MainHomeState extends State<MainHome> {
   int currentMenu = 0;
+  int famz = 0;
 
   Widget containerWidget() {
     switch (currentMenu) {
